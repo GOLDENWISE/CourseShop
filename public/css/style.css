@@ -1,0 +1,111 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+}
+
+//desain login
+section.auth section.logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 55px;
+}
+section.auth section.logo img {
+    width: 360px;
+    height: 308px;
+}
+section.auth section.logo h1 {
+    color: #702228;
+    font-size: 47px;
+    text-align: center;
+}
+section.auth section.register,
+section.auth section.login {
+    display: flex;
+    padding-left: 54px;
+    padding-right: 54px;
+    padding-top: 65px;
+    padding-bottom: 31px;
+    flex-direction: column;
+    background-color: #702228;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    width: 517px;
+    border-radius: 52px;
+}
+
+section.auth section.register h1,
+section.auth section.login h1 {
+    font-size: 75px;
+    margin-bottom: 65px;
+}
+
+section.auth section.register form,
+section.auth section.login form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    margin-bottom: 40px;
+}
+
+section.auth section.register form input,
+section.auth section.login form input {
+    width: 409px;
+    height: 45px;
+    border-radius: 13px;
+    border-color: white;
+    font-size: 19px;
+}
+
+section.auth section.register form button,
+section.auth section.login form button {
+    border-radius: 13px;
+    width: 211px;
+    height: 31px;
+    font-size: 13px;
+    font-weight: bolder;
+    background-color: #198754;
+    border-color: #198754;
+    color: white;
+}
+
+section.auth section.register p,
+section.auth section.login p {
+    font-style: italic;
+}
+
+//desain navbar
+nav .logo {
+    margin-left: 40px;
+    margin-right: 207px;
+}
+nav .logo img {
+    width: 100px;
+    height: 100px;
+}
+nav .menu ul {
+    display: flex;
+    align-items: center;
+    gap: 74px;
+    list-style: none;
+}
+nav .menu ul li a {
+    text-decoration: none;
+    color: black;
+}
+nav a.login-button {
+    margin-right: 40px;
+    text-decoration: none;
+    color: black;
+    width: 158px;
+    height: 53px;
+    background-color: #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
