@@ -1,5 +1,5 @@
 @extends('layouts.auth')
-@section('register')
+@section('authorization-content')
 <section class="register" style="height: 601px;">
       <h1>REGISTER</h1>
       <form action="">
