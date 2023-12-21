@@ -11,7 +11,11 @@
         <li><a href="">Lainnya</a></li>
       </ul>
     </div>
-    <a href="{{ route('login') }}" class="login-button">Login</a>
+    @auth
+    <a href="{{ route('logout') }}" class="login-button">Logout</a>
+    @else
+      <a href="{{ route('login') }}" class="login-button">Login</a>
+    @endauth
   </nav>
   @yield('content')
 </body>

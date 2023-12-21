@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Home;
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +15,8 @@ use App\Http\Controllers\Home;
 */
 
 Route::get('/', [Home::class, 'index'])->name('home');
-Route::get('/login', [Auth::class, 'login'])->name('login');
-Route::get('/register', [Auth::class, 'register'])->name('register');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'authorization'])->name('authorize');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'store_data_register'])->name('authenticate');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
