@@ -2,7 +2,9 @@
 <body style="background-color: #702228;">
   <nav class="navbar">
     <div class="logo">
-      <img src="../img/CourseShopLogo.png" alt="Logo Course Shop">
+      <a href="{{ route('home') }}">
+        <img src="../img/CourseShopLogo.png" alt="Logo Course Shop">
+      </a>
     </div>
     <div class="menu">
       <ul>
@@ -18,7 +20,7 @@
         <li><a href="">Dashboard</a></li>
       </ul>
     </div>
-      <img src="../img/Profil.jpg" alt="" style="width: 100px; height: 100px;" onclick="showMenu()">
+      <img src="../img/Profil.jpg" alt="" style="width: 70px; height: 70px;" onclick="showMenu()">
     @else
       <a href="{{ route('login') }}" class="login-button">Login</a>
     @endauth

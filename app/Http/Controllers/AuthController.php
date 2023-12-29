@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Student;
+use App\Models\Mentor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Auth;
@@ -24,12 +26,28 @@ class AuthController extends Controller{
             'name' => 'required|max:50',
             'email' => 'required|email',
             'password' => 'required|min:8|max:16',
-            'confirm_password' => 'required|same:password'
+            'confirm_password' => 'required|same:password',
         ]);
 
         $validation['password'] = bcrypt($validation['password']);
         
         User::create($validation);
+        Mentor::create([
+            'user_id' => User::where('email', $request->email)->first()->id, 
+            'status' => true,
+            'description' =>'dgfsjgdhjfgjhsdagfjhasdgfjasdgfjsdagfsdgfhjsdgfhjdfgshjdagfjhasdgfjhsdagfhjsda'
+        ]);
+        Student::create([
+            'user_id' => User::where('email', $request->email)->first()->id, 
+            'status' => true,
+            'description' =>'dgfsjgdhjfgjhsdagfjhasdgfjasdgfjsdagfsdgfhjsdgfhjdfgshjdagfjhasdgfjhsdagfhjsda'
+        ]);
+        Mentor::create([
+            'user_id' => User::where('email', $request->email)->first()->id, 
+            'status' => false,
+            'description' =>'dgfsjgdhjfgjhsdagfjhasdgfjasdgfjsdagfsdgfhjsdgfhjdfgshjdagfjhasdgfjhsdagfhjsda'
+        ]);
+
         return redirect()->route('login');
     }
     public function authorization(Request $request){

@@ -4,7 +4,7 @@ body {
     padding: 0;
 }
 
-//desain login
+/* //desain login */
 section.auth section.logo {
     display: flex;
     flex-direction: column;
@@ -79,7 +79,7 @@ section.auth section.login p {
     font-style: italic;
 }
 
-//desain navbar
+/* //desain navbar */
 body {
     margin: 0;
     padding: 0;
@@ -88,12 +88,16 @@ body {
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    height: 157px;
+    justify-content: space-between;
+    width: 100%;
+    height: 90px;
     background-color: white;
 }
 .menu-profile {
     display: none;
+    position: absolute;
+    right: 13px;
+    top: 100px;
     background-color: #702228;
     align-items: center;
     justify-content: center;
@@ -129,17 +133,16 @@ body {
     text-decoration: none;
     background-color: #000;
     color: #fff;
-    padding: 10px 20px;
     border-radius: 5px;
 }
 
 nav .logo {
     margin-left: 40px;
-    margin-right: 207px;
+    /* margin-right: 207px; */
 }
 nav .logo img {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
 }
 nav .menu ul {
     display: flex;
@@ -163,14 +166,12 @@ nav a.login-button {
     justify-content: center;
 }
 
-/* Add your styles here */
+/* //desain home guest */
 
 .home {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
 }
 
 .heading {
@@ -186,6 +187,7 @@ nav a.login-button {
     width: 482px;
     height: 135px;
     margin-top: 10px;
+    text-align: center;
 }
 
 .list-product {
@@ -242,7 +244,7 @@ nav a.login-button {
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
-    background: #b4f1f4;
+    background: #a83642;
     width: 873px;
     height: 185px;
     margin-top: 24px;
@@ -272,7 +274,7 @@ nav a.login-button {
 .footer {
     display: flex;
     justify-content: space-around;
-    width: 1180px;
+    width: 100%;
     color: white;
     font-size: 25px;
 }
@@ -291,4 +293,138 @@ nav a.login-button {
 }
 .footer-asideRight ul li img {
     margin-right: 15px;
+}
+
+/* //desain home student */
+
+.heading-user {
+    background-color: #d9d9d9;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+}
+
+.content-student {
+    margin-left: 153px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.home-langganan {
+    width: 956px;
+    height: 205px;
+    background-color: white;
+    padding-left: 30px;
+    border-radius: 20px;
+    align-self: center;
+    margin-bottom: 30px;
+}
+
+.langganan-content {
+    width: 871px;
+    height: 121px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    padding-left: 34px;
+}
+
+.btn-langganan {
+    width: 189px;
+    height: 47px;
+    border-radius: 5px;
+    background: #a83642;
+    font-size: 15px;
+}
+
+.btn-langganan a {
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mid-student {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.learning-path-home {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 947px;
+    padding-left: 35px;
+    height: 200px;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+.path-title {
+    font-size: 19px;
+    margin-top: -19px;
+    margin-bottom: 13px;
+}
+
+.learning-path-content {
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    background: #a83642;
+}
+
+.learning-path-content a {
+    width: 100%;
+    height: 100%;
+    line-height: 250%;
+    text-decoration: none;
+    color: white;
+}
+
+.learning-activity {
+    width: 747px;
+    min-height: 353px;
+    background-color: white;
+    margin-top: 50px;
+    border-radius: 20px;
+}
+
+.line-learning-activity {
+    width: 99%;
+}
+
+.learning-taken-student {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.study-button {
+    width: 173px;
+    height: 47px;
+    background: #a83642;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.study-button a {
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: white;
+    line-height: 250%;
+}
+
+.line-content-student-footer {
+    width: 92%;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
