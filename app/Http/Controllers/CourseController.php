@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Jurusan;
+use App\Models\Student;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 
@@ -14,7 +16,14 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user()->student->id;
+        
+        return view('langganan', [
+            'title' => 'Langganan',
+            'courses' => Course::whereDoesntHave('pembelian', function ($query) use ($user) {
+                $query->where('student_id', $user);
+            })->get()
+        ]);
     }
 
     /**

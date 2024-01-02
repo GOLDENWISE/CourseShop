@@ -8,7 +8,7 @@
     </div>
     <div class="menu">
       <ul>
-        <li><a href="">Langganan</a></li>
+        <li><a href="{{ route('langganan') }}">Langganan</a></li>
         <li><a href="{{ route('jurusan') }}">Learning Path</a></li>
         <li><a href="">Lainnya</a></li>
       </ul>

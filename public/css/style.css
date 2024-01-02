@@ -445,3 +445,46 @@ nav a.login-button {
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
+.heading-langganan {
+    width: 100%;
+    min-height: 173px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-heading-langganan {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+}
+
+.content-list-langganan {
+    display: flex;
+    flex-direction: column;
+    width: 1180px;
+    height: 564px;
+    overflow: auto;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.course-items {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid black;
+}
+
+.course-items .image-h1-p {
+    display: flex;
+    gap: 30px;
+}
+
+.course-items .image-h1-p img {
+    width: 243px;
+    height: 148px;
+    border-radius: 20px;
+}
