@@ -295,6 +295,23 @@ nav a.login-button {
     margin-right: 15px;
 }
 
+/* nav ketika halaman jurusan */
+.nav-jurusan {
+    width: 100%;
+    height: 39px;
+    border: 1px solid #000;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.nav-jurusan a {
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
+}
+
 /* //desain home student */
 
 .heading-user {

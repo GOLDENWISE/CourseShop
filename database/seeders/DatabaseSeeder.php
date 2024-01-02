@@ -13,22 +13,70 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
+        \App\Models\Jurusan::create([
+            'name' => 'Ilmu Komputer'
+        ]);
+        \App\Models\Jurusan::create([
+            'name' => 'Kimia'
+        ]);
+        \App\Models\Jurusan::create([
+            'name' => 'Ekonomi'
+        ]);
+        \App\Models\Jurusan::create([
+            'name' => 'Komunikasi'
+        ]);
+        \App\Models\Jurusan::create([
+            'name' => 'Teknik Kimia'
+        ]);
+        \App\Models\Jurusan::create([
+            'name' => 'Teknik Mesin'
+        ]);
+        \App\Models\Jurusan::create([
+            'name' => 'Teknik Perminyakan'
+        ]);
+        \App\Models\Jurusan::create([
+            'name' => 'Teknik Logistik'
+        ]);
+        \App\Models\Jurusan::create([
+            'name' => 'Teknik Elektro'
+        ]);
+        \App\Models\Jurusan::create([
+            'name' => 'Teknik Sipil'
+        ]);
+        \App\Models\Jurusan::create([
+            'name' => 'Teknik Lingkungan'
+        ]);
+        \App\Models\Jurusan::create([
+            'name' => 'Hubungan Internasional'
+        ]);
+        \App\Models\Jurusan::create([
+            'name' => 'Teknik Geofisika'
+        ]);
+        \App\Models\Jurusan::create([
+            'name' => 'Teknik Geologi'
+        ]);
+        \App\Models\Jurusan::create([
+            'name' => 'Manajemen'
+        ]);
         \App\Models\Course::create([
             'name' => 'Kalkulus I',
             'description' => 'membekali pembelajar dengan konsep-konsep dasar matematika yang mencakup sistem bilangan real, fungsi, limit, turunan, dan integral',
             'mentor_id' => '1',
+            'jurusan_id' => '1',
             'price' => 250000
         ]);
         \App\Models\Course::create([
             'name' => 'Berpikir Komputasi',
             'description' => 'proses berpikir yang dilibatkan dalam merumuskan masalah serta mengekspresikan solusinya sedemikian rupa hingga dapat diaplikasikan oleh mesin atau mesin dengan operator manusia untuk bekerja secara efektif.',
             'mentor_id' => '2',
+            'jurusan_id' => '1',
             'price' => 150000
         ]);
         \App\Models\Course::create([
             'name' => 'Matematika Diskrit',
             'description' => 'cabang ilmu aljabar yang mempelajari perhitungan menggunakan bilangan diskrit (tidak kontinyu)',
             'mentor_id' => '3',
+            'jurusan_id' => '1',
             'price' => 300000
         ]);
 

@@ -2,19 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
 use App\Models\Jurusan;
-use App\Http\Requests\StoreCourseRequest;
-use App\Http\Requests\UpdateCourseRequest;
+use App\Models\Course;
+use App\Http\Requests\StoreJurusanRequest;
+use App\Http\Requests\UpdateJurusanRequest;
+use Illuminate\Support\Facades\URL;
 
-class CourseController extends Controller
+class JurusanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('home', [
+            'title' => 'Course App',
+            'jurusans' => Jurusan::all(),
+            'courses' => Course::all()
+        ]);
     }
 
     /**
@@ -28,7 +33,7 @@ class CourseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCourseRequest $request)
+    public function store(StoreJurusanRequest $request)
     {
         //
     }
@@ -36,20 +41,20 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Jurusan $jurusan, Course $course)
+    public function show(Jurusan $jurusan)
     {
-        return view('course', [
-            'title' => 'Course Academy - '.$course->name,
+        return view('home', [
+            'title' => 'Course App',
             'jurusan' => $jurusan,
-            'jurusans' => Jurusan::all(),
-            'course' => $course 
+            'courses' => Course::all(),
+            'jurusans' => Jurusan::all()
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Course $course)
+    public function edit(Jurusan $jurusan)
     {
         //
     }
@@ -57,7 +62,7 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCourseRequest $request, Course $course)
+    public function update(UpdateJurusanRequest $request, Jurusan $jurusan)
     {
         //
     }
@@ -65,7 +70,7 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Course $course)
+    public function destroy(Jurusan $jurusan)
     {
         //
     }

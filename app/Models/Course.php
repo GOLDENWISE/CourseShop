@@ -10,7 +10,7 @@ class Course extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $with = ['mentor'];
+    protected $with = ['mentor', 'jurusan'];
 
     public function material(){
         return $this->hasMany(Material::class);
@@ -20,5 +20,8 @@ class Course extends Model
     }
     public function pembelian(){
         return $this->hasMany(Pembelian::class);
+    }
+    public function jurusan(){
+        return $this->belongsTo(Jurusan::class);
     }
 }

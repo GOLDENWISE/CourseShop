@@ -9,7 +9,7 @@
       <div class="langganan-content">
         <p>Mulailah belajar di Course Academy. Jelajahi Course berikut ini : </p>
         <div class="btn-langganan">
-          <a href="{{ route('home') }}" class="btn-langganan">Daftar Course</a>
+          <a href="{{ route('jurusan') }}" class="btn-langganan">Daftar Course</a>
         </div>
       </div>
     </div>

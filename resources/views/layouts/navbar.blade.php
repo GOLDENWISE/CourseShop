@@ -3,13 +3,13 @@
   <nav class="navbar">
     <div class="logo">
       <a href="{{ route('home') }}">
-        <img src="../img/CourseShopLogo.png" alt="Logo Course Shop">
+        <img src="{{ asset('img/CourseShopLogo.png') }}" alt="Logo Course Shop">
       </a>
     </div>
     <div class="menu">
       <ul>
         <li><a href="">Langganan</a></li>
-        <li><a href="">Learning Path</a></li>
+        <li><a href="{{ route('jurusan') }}">Learning Path</a></li>
         <li><a href="">Lainnya</a></li>
       </ul>
     </div>
@@ -20,11 +20,21 @@
         <li><a href="">Dashboard</a></li>
       </ul>
     </div>
-      <img src="../img/Profil.jpg" alt="" style="width: 70px; height: 70px;" onclick="showMenu()">
+      <img src="{{ asset('img/Profil.jpg') }}" alt="" style="width: 70px; height: 70px;" onclick="showMenu()">
     @else
       <a href="{{ route('login') }}" class="login-button">Login</a>
     @endauth
   </nav>
+  
+  @if(Request::routeIs('jurusan'))
+    
+    @include('content-jurusan')
+    
+  @elseif(Request::routeIs(['course', 'course-class']))
+  
+    @include('content-course')
+  
+  @endif
 
   @yield('content')
   <script>
