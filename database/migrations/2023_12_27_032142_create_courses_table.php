@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('jurusan_id');
             $table->string('name');
             $table->text('description', 65535);
+            $table->string('requirement');
+            $table->text('facility', 65535);
             $table->integer('price');
             $table->timestamps();
         });

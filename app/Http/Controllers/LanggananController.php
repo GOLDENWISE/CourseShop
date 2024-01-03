@@ -2,21 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Course;
-use App\Models\Jurusan;
-use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\StoreCourseRequest;
-use App\Http\Requests\UpdateCourseRequest;
 
-class CourseController extends Controller
+class LanggananController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $user = Auth::user()->student->id;
         
+        return view('langganan', [
+            'title' => 'Langganan',
+            'courses' => Course::whereDoesntHave('pembelian', function ($query) use ($user) {
+                $query->where('student_id', $user);
+            })->get()
+        ]);
     }
 
     /**
@@ -30,7 +34,7 @@ class CourseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCourseRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -38,20 +42,19 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Jurusan $jurusan, Course $course)
+    public function show(string $id)
     {
-        return view('course', [
-            'title' => 'Course Academy - '.$course->name,
-            'jurusan' => $jurusan,
-            'jurusans' => Jurusan::all(),
-            'course' => $course 
+        $course = Course::where('id', $id)->first();
+        return view('description_course', [
+            'title' => 'Langganan - '.$course->name,
+            'course' => $course
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Course $course)
+    public function edit(string $id)
     {
         //
     }
@@ -59,7 +62,7 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCourseRequest $request, Course $course)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -67,7 +70,7 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Course $course)
+    public function destroy(string $id)
     {
         //
     }

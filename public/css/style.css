@@ -471,6 +471,11 @@ nav a.login-button {
     background-color: white;
 }
 
+.content-list-langganan a {
+    text-decoration: none;
+    color: black;
+}
+
 .course-items {
     display: flex;
     justify-content: space-between;
@@ -487,4 +492,113 @@ nav a.login-button {
     width: 243px;
     height: 148px;
     border-radius: 20px;
+}
+.course-items .image-h1-p .h1-p {
+    width: 500px;
+    text-align: justify;
+}
+.price {
+    font-size: 14px;
+}
+
+/* desain halaman learning path */
+.learning-path-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 228px;
+    width: 100%;
+    background-color: #d9d9d9;
+}
+
+.content-course-heading {
+    width: 363px;
+    text-align: center;
+}
+
+.course-materials {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 378px;
+    width: 100%;
+    gap: 48px;
+}
+
+.materials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 151px;
+}
+
+.material {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    min-height: 100px;
+    width: 300px;
+    background-color: #d9d9d9;
+}
+
+/* desain halaman langganan description */
+.course-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    height: 262px;
+    width: 100%;
+}
+
+.course-heading-aside-left {
+    width: 500px;
+}
+
+.course-heading-aside-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.course-heading-aside-right a {
+    background-color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 153px;
+    height: 39px;
+    color: black;
+    font-weight: bold;
+}
+
+.course-content-body {
+    background-color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.course-content-body .facility {
+    width: 948px;
+    border-radius: 25px;
+    background: #d9d9d9;
+    padding: 15px;
+}
+
+.course-content-body .description-course {
+    width: 948px;
+    margin-top: 20px;
 }

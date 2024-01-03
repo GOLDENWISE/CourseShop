@@ -5,7 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Home;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\CourseController;
-
+use App\Http\Controllers\LanggananController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,4 +32,4 @@ Route::get('/jurusan/{jurusan}/course', [JurusanController::class, 'show'])->nam
 Route::get('/jurusan/{jurusan}/course/{course}', [CourseController::class, 'show'])->name('course-class');
 
 // set route langganan
-Route::get('/langganan', [CourseController::class, 'index'])->name('langganan')->middleware('auth');
+Route::resource('langganan', LanggananController::class)->middleware('auth');

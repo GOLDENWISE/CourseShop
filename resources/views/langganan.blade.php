@@ -13,6 +13,7 @@
 
     @foreach($courses as $course)
 
+    <a href="{{ route('langganan.show', ['langganan' => $course->id]) }}">
       <div class="course-items">
         <div class="image-h1-p">
           <img src="{{ asset('img/image 1.png') }}" alt="">
@@ -22,9 +23,10 @@
           </div>
         </div>
         <div class="price">
-          <h3>Rp.{{ $course->price }}</h3>
+          <h3>Rp {{ $course->price }}</h3>
         </div>
       </div>
+    </a>
 
     @endforeach
 
