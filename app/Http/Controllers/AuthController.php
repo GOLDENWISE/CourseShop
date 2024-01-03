@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Student;
 use App\Models\Mentor;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Auth;
@@ -32,20 +33,18 @@ class AuthController extends Controller{
         $validation['password'] = bcrypt($validation['password']);
         
         User::create($validation);
-        Mentor::create([
-            'user_id' => User::where('email', $request->email)->first()->id, 
-            'status' => true,
-            'description' =>'dgfsjgdhjfgjhsdagfjhasdgfjasdgfjsdagfsdgfhjsdgfhjdfgshjdagfjhasdgfjhsdagfhjsda'
-        ]);
         Student::create([
             'user_id' => User::where('email', $request->email)->first()->id, 
             'status' => true,
-            'description' =>'dgfsjgdhjfgjhsdagfjhasdgfjasdgfjsdagfsdgfhjsdgfhjdfgshjdagfjhasdgfjhsdagfhjsda'
         ]);
         Mentor::create([
             'user_id' => User::where('email', $request->email)->first()->id, 
             'status' => false,
             'description' =>'dgfsjgdhjfgjhsdagfjhasdgfjasdgfjsdagfsdgfhjsdgfhjdfgshjdagfjhasdgfjhsdagfhjsda'
+        ]);
+        Admin::create([
+            'user_id' => User::where('email', $request->email)->first()->id, 
+            'status' => false
         ]);
 
         return redirect()->route('login');
@@ -58,7 +57,11 @@ class AuthController extends Controller{
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->route('home');
+            if(Auth::user()->admin->status){
+                return redirect()->route('admin.index');
+            }else{
+                return redirect()->route('home');
+            }
         }else{
             return redirect()->route('login');
         }

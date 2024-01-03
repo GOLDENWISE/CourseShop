@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Home;
@@ -33,3 +34,6 @@ Route::get('/jurusan/{jurusan}/course/{course}', [CourseController::class, 'show
 
 // set route langganan
 Route::resource('langganan', LanggananController::class)->middleware('auth');
+
+//set route admin
+Route::resource('admin', AdminController::class)->middleware('auth');

@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Pembelian;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Carbon;
 
 class AdminController extends Controller
 {
@@ -13,7 +17,28 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        if(Auth::user()->admin->status){
+            
+            $total = 0;
+            $total_money_per_month = 0;
+            foreach(Pembelian::all() as $pembelian){
+                $total += $pembelian->course->price;
+            }
+            foreach(Pembelian::whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->get() as $pembelian){
+                $total_money_per_month += $pembelian->course->price;
+            }
+            return view('homeAdmin', [
+                'title' => 'Dashboard',
+                'total' => $total,
+                'total_money_per_month' => $total_money_per_month,
+                'monthly_purchase_data' => Pembelian::monthlyData()->get()->toJson()
+            ]);
+
+        }else{
+
+            return redirect(URL::previous());
+
+        }
     }
 
     /**

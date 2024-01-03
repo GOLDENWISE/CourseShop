@@ -11,11 +11,7 @@
       @elseif(Auth::user()->mentor->status)
 
         @include('homeMentor')
-      
-      @elseif(Auth::user()->admin->status)
 
-        @include('homeAdmin')
-      
       @endif
 
     @else

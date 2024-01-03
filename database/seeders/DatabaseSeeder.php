@@ -170,6 +170,34 @@ class DatabaseSeeder extends Seeder
             'description' => '',
             'course_id' => 3,
         ]);
+        
+        \App\Models\Pembelian::create([
+            'student_id' => 2,
+            'course_id' => 2
+        ]);
+
+        \App\Models\Pembelian::create([
+            'student_id' => 2,
+            'course_id' => 1
+        ]);
+
+        \App\Models\Pembelian::create([
+            'student_id' => 3,
+            'course_id' => 3
+        ]);
+
+        \App\Models\Pembelian::create([
+            'student_id' => 2,
+            'course_id' => 3
+        ]);
+        \App\Models\Pembelian::create([
+            'student_id' => 3,
+            'course_id' => 2
+        ]);
+        \App\Models\Pembelian::create([
+            'student_id' => 3,
+            'course_id' => 1
+        ]);
 
     }
 }
