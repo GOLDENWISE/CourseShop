@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Pembelian;
+use App\Models\Course;
+use App\Models\Jurusan;
+use App\Models\User;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 use Illuminate\Support\Facades\Auth;
@@ -41,12 +44,28 @@ class AdminController extends Controller
         }
     }
 
+    public function showPurchaseData(){
+        return view('tables', [
+            'title' => 'Data Pembelian',
+            'labels' => ['ID', 'Username','Email', 'Course', 'Harga', 'Tanggal Pembelian'],
+            'datas' => Pembelian::all(),
+        ]);
+    }
+
+    public function showCourseData(){
+        return view('tables', [
+            'title' => 'Data Course',
+            'labels' => ['Course', 'List Material', 'Mentor', 'Jurusan'],
+            'datas' => Course::all()
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Material;
+use App\Models\Course;
 use App\Http\Requests\StoreMaterialRequest;
 use App\Http\Requests\UpdateMaterialRequest;
 
@@ -21,7 +22,11 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        //
+        return view('addMaterial', [
+            'title' => 'Tambah Materi',
+            'Title' => 'Materi',
+            'courses' => Course::all()
+        ]);
     }
 
     /**

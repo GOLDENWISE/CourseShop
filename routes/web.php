@@ -7,6 +7,7 @@ use App\Http\Controllers\Home;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LanggananController;
+use App\Http\Controllers\MaterialController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,3 +38,7 @@ Route::resource('langganan', LanggananController::class)->middleware('auth');
 
 //set route admin
 Route::resource('admin', AdminController::class)->middleware('auth');
+Route::get('/data-pembelian', [AdminController::class, 'showPurchaseData'])->name('purchase-data')->middleware('auth');
+Route::get('/data-course', [AdminController::class, 'showCourseData'])->name('course-data')->middleware('auth');
+Route::resource('course', CourseController::class)->middleware('auth');
+Route::resource('materi', MaterialController::class)->middleware('auth');

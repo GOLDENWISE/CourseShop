@@ -45,7 +45,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xl-12">
-                            <div class="card shadow mb-4">
+                            <div class="card shadow mb-5">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">Overview Pendapatan</h6>
                                 </div>
@@ -55,16 +55,5 @@
                             </div>
                         </div>
                     </div>
-        </div>
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Course Academy 2024</span>
                 </div>
-            </div>
-        </footer>
-    </div>
-    <script>const monthlyPurchaseData = {!! $monthly_purchase_data !!};</script>
-
-
 @include('layouts.footeradmin')
