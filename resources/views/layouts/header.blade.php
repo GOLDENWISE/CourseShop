@@ -11,14 +11,14 @@
 
   @auth
     
-    @if(Request::routeIs(['admin.index', 'course.edit','course.create','purchase-data', 'course-data']))
+    @if(Request::routeIs(['admin.index', 'course.edit','course.create','purchase-data', 'course-data', 'userdata.index']))
   
       <link rel="stylesheet" href="{{ asset('css/sb-admin-2.min.css') }}" type="text/css"> 
       <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
       <link href="{{  asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
-      @if(Request::routeIs(['purchase-data', 'user-data']))
+      @if(Request::routeIs(['purchase-data', 'userdata.index']))
 
         <style>
           #wrapper {

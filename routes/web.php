@@ -9,6 +9,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LanggananController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,9 +39,10 @@ Route::get('/jurusan/{jurusan}/course/{course}', [CourseController::class, 'show
 Route::resource('langganan', LanggananController::class)->middleware('auth');
 
 //set route admin
-Route::resource('admin', AdminController::class)->middleware('auth');
-Route::get('/data-pembelian', [AdminController::class, 'showPurchaseData'])->name('purchase-data')->middleware('auth');
-Route::get('/data-course', [AdminController::class, 'showCourseData'])->name('course-data')->middleware('auth');
-Route::resource('course', CourseController::class)->middleware('auth');
-Route::resource('materi', MaterialController::class)->middleware('auth');
-Route::resource('pembelian', PembelianController::class)->middleware('auth');
+Route::resource('admin', AdminController::class)->middleware(['auth', 'isAdmin']);
+Route::get('/data-pembelian', [AdminController::class, 'showPurchaseData'])->name('purchase-data')->middleware(['auth', 'isAdmin']);
+Route::get('/data-course', [AdminController::class, 'showCourseData'])->name('course-data')->middleware(['auth', 'isAdmin']);
+Route::resource('course', CourseController::class)->middleware(['auth', 'isAdmin']);
+Route::resource('materi', MaterialController::class)->middleware(['auth', 'isAdmin']);
+Route::resource('pembelian', PembelianController::class)->middleware(['auth', 'isAdmin']);
+Route::resource('userdata', UserController::class)->middleware(['auth', 'isAdmin']);

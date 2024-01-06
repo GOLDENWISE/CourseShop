@@ -2,7 +2,7 @@
 <body style="background-color: #702228;">
   <nav class="navbar">
     
-    @if(!Request::routeIs(['admin.index','purchase-data', 'course-data']))
+    @if(!Request::routeIs(['admin.index','purchase-data', 'course-data', 'userdata.index']))
 
       <div class="logo">
         <a href="{{ route('home') }}">
@@ -25,7 +25,7 @@
         <ul>
           @if(Auth::user()->admin->status)
 
-            @if(!Request::routeIs(['admin.index','purchase-data', 'course-data']))
+            @if(!Request::routeIs(['admin.index','purchase-data', 'course-data', 'userdata.index']))
 
               <li><a href="{{ route('admin.index') }}">Admin</a></li>
 
@@ -41,7 +41,7 @@
         </ul>
       </div>
 
-      @if(Request::routeIs(['admin.index','purchase-data', 'course-data'])) 
+      @if(Request::routeIs(['admin.index','purchase-data', 'course-data', 'userdata.index'])) 
       
         <img src="{{ asset('img/Profil.jpg') }}" alt="" style="width: 70px; height: 70px;margin-left: auto; margin-right: 0" onclick="showMenu()">
         
@@ -71,7 +71,7 @@
 
   @yield('content')
 
-  @if(!Request::routeIs(['admin.index','purchase-data', 'course-data']))
+  @if(!Request::routeIs(['admin.index','purchase-data', 'course-data', 'userdata.index']))
 
       <script src="{{ asset('js/script.js') }}"></script>
     

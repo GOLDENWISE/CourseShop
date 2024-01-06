@@ -25,10 +25,14 @@ class AdminController extends Controller
             $total = 0;
             $total_money_per_month = 0;
             foreach(Pembelian::all() as $pembelian){
-                $total += $pembelian->course->price;
+                if(isset($pembelian->course->price)){
+                    $total += $pembelian->course->price;
+                }
             }
             foreach(Pembelian::whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->get() as $pembelian){
-                $total_money_per_month += $pembelian->course->price;
+                if(isset($pembelian->course->price)){
+                    $total_money_per_month += $pembelian->course->price;
+                }
             }
             return view('homeAdmin', [
                 'title' => 'Dashboard',

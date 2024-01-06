@@ -33,6 +33,8 @@
                                                 @if(Request::routeIs('course-data'))
                                                     <th>Edit</th>
                                                     <th>Delete</th>
+                                                @elseif(Request::routeIs('userdata.index'))
+                                                    <th>Manage user status</th>
                                                 @endif
                                             </tr>
                                         </thead>
@@ -41,12 +43,14 @@
                                             @foreach($datas as $data)
                                                 <tr>
                                                     @if(count($labels) == 6)
-                                                        <td>{{ $data->id }}</td>
-                                                        <td>{{ $data->student->user->name }}</td>
-                                                        <td>{{ $data->student->user->email }}</td>
-                                                        <td>{{ $data->course->name }}</td>
-                                                        <td>{{ $data->course->price }}</td>
-                                                        <td>{{ $data->created_at }}</td>
+                                                        @if(isset($data->course->name))
+                                                            <td>{{ $data->id }}</td>
+                                                            <td>{{ $data->student->user->name }}</td>
+                                                            <td>{{ $data->student->user->email }}</td>
+                                                            <td>{{ $data->course->name }}</td>
+                                                            <td>{{ $data->course->price }}</td>
+                                                            <td>{{ $data->created_at }}</td>
+                                                        @endif
                                                     @elseif(count($labels) == 4)
                                                         <td>{{ $data->name }}</td>
                                                         <td>
@@ -56,7 +60,7 @@
                                                             @endforeach
                                                             </ul>
                                                         </td>
-                                                        <td>{{ $data->mentor->user->name }}</td>
+                                                        <td>@if(isset($data->mentor->user->name)){{ $data->mentor->user->name }}@endif</td>
                                                         <td>{{ $data->jurusan->name }}</td>
                                                         <td><a href="{{ route('course.edit', ['course' => $data->id]) }}" class="btn btn-warning">Edit</a></td>
                                                         <td>
@@ -66,6 +70,26 @@
                                                                 <button type="submit" class="btn btn-danger">DELETE</button>
                                                             </form>
                                                         </td>
+                                                    @elseif(count($labels) ==  3)
+                                                        <td>{{ $data->name }}</td>
+                                                        <td>{{ $data->email }}</td>
+                                                        <form action="{{ route('userdata.update', ['userdatum' => $data->id]) }}" method="post">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <td>
+                                                                <div class="container d-flex justify-content-around">
+                                                                    <input type="checkbox" id="student" name="student" value={{ true }} @if($data->student->status) checked @endif>
+                                                                    <input type="checkbox" id="mentor" name="mentor" value={{ true }} @if($data->mentor->status) checked @endif>
+                                                                    <input type="checkbox" id="admin" name="admin" value={{ true }} @if($data->admin->status) checked @endif>
+                                                                </div>
+                                                                <div class="container d-flex justify-content-around">
+                                                                    <label for="student">Student</label>
+                                                                    <label for="mentor">Mentor</label>
+                                                                    <label for="admin">Admin</label>
+                                                                </div>
+                                                            </td>
+                                                            <td><button type="submit" class="btn btn-warning text-dark">UPDATE</button></td>
+                                                        </form>
                                                     @endif
                                                 </tr>
                                             @endforeach

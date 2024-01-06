@@ -22,6 +22,10 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Data Pembelian</span>
       </a>
+      <a class="nav-link" href="{{ route('userdata.index') }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Data User</span>
+      </a>
       <a class="nav-link" href="{{ route('course-data') }}">
           <i class="fas fa-fw fa-table"></i>
           <span>List Course</span>
