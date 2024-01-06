@@ -12,7 +12,12 @@
     </div>
     <div class="course-heading-aside-right">
       <img src="{{ asset('img/image 1.png') }}" alt="">
-      <a href="">Beli Sekarang</a>
+      <form action="{{ route('langganan.store') }}" method="post">
+        @csrf
+        
+        <input type="hidden" name='price' value="{{ $course->price }}">
+        <button type='submit' name="langganan" value="{{ $course->id }}" >Beli Sekarang</button>
+      </form>
     </div>
   </div>
   <div class="course-content-body">

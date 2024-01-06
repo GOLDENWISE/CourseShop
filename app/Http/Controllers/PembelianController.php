@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pembelian;
+use Illuminate\Http\Request;
 use App\Http\Requests\StorePembelianRequest;
 use App\Http\Requests\UpdatePembelianRequest;
 
@@ -11,9 +12,13 @@ class PembelianController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        Pembelian::create([
+            'student_id' => $request['student'],
+            'course_id' => $request['amp;course']
+        ]);
+        return redirect()->route('langganan.index');
     }
 
     /**
@@ -27,9 +32,9 @@ class PembelianController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePembelianRequest $request)
+    public function store(Request $request)
     {
-        //
+       
     }
 
     /**

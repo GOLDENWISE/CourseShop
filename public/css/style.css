@@ -567,7 +567,7 @@ nav a.login-button {
     gap: 10px;
 }
 
-.course-heading-aside-right a {
+.course-heading-aside-right form button {
     background-color: white;
     text-decoration: none;
     display: flex;

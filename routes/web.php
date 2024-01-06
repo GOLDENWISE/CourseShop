@@ -8,6 +8,7 @@ use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LanggananController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\PembelianController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,3 +43,4 @@ Route::get('/data-pembelian', [AdminController::class, 'showPurchaseData'])->nam
 Route::get('/data-course', [AdminController::class, 'showCourseData'])->name('course-data')->middleware('auth');
 Route::resource('course', CourseController::class)->middleware('auth');
 Route::resource('materi', MaterialController::class)->middleware('auth');
+Route::resource('pembelian', PembelianController::class)->middleware('auth');

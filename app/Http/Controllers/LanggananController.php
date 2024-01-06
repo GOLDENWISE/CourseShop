@@ -28,7 +28,7 @@ class LanggananController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -36,7 +36,35 @@ class LanggananController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'course_id' => $request->langganan,
+                'gross_amount' => $request->price,
+            ),
+            'customer_details' => array(
+                'name' => Auth::user()->name,
+                'id' => Auth::user()->id,
+                'email' => Auth::user()->email,
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        $course = Course::where('id', $request->langganan)->first();
+        return view('pay_course', [
+            'title' => 'Pay - '.$course->name,
+            'course' => $course,
+            'snapToken' => $snapToken
+        ]);
     }
 
     /**

@@ -1,25 +1,17 @@
-  @extends('layouts.navbar')
+@extends('layouts.navbar')
 
-  @section('content')
+@section('content')
 
-    @auth
+  @auth
 
-      @if(Auth::user()->student->status)
+    @include('homestudent')
 
-        @include('homestudent')
+  @else
+
+    @include('homeguest')
       
-      @elseif(Auth::user()->mentor->status)
+  @endauth
 
-        @include('homeMentor')
-
-      @endif
-
-    @else
-
-      @include('homeguest')
-      
-    @endauth
-
-  @endsection
+@endsection
 </body>
 </html>
