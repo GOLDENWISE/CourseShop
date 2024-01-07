@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mentor;
+use App\Models\Course;
+use App\Models\Jurusan;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreMentorRequest;
 use App\Http\Requests\UpdateMentorRequest;
 
@@ -13,7 +16,9 @@ class MentorController extends Controller
      */
     public function index()
     {
-        //
+        return view('homeMentor', [
+            'title' => 'Dashboard Mentor'
+        ]);
     }
 
     /**
@@ -35,9 +40,21 @@ class MentorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Mentor $mentor)
+    public function show(String $id)
     {
-        //
+        $course = Course::where('id', $id)->first();
+        if(Auth::user()->mentor->id == $course->mentor_id){
+
+            return view('courseMentor', [
+                'title' => $course->name,
+                'course' => $course
+            ]);
+
+        }else{
+
+            return redirect()->route('home');
+
+        }
     }
 
     /**

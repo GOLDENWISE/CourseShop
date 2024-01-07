@@ -36,6 +36,20 @@
             @endif
 
           @endif
+          
+          @if(Auth::user()->mentor->status)
+
+            @if(!Request::routeIs(['mentor.index']))
+
+              <li><a href="{{ route('mentor.index') }}">Mentor</a></li>
+
+            @else
+
+              <li><a href="{{ route('home') }}">Beranda</a></li>
+
+            @endif
+
+          @endif
 
           <li><a href="{{ route('logout') }}">Logout</a></li>
         </ul>

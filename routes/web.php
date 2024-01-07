@@ -10,6 +10,7 @@ use App\Http\Controllers\LanggananController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MentorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,3 +47,8 @@ Route::resource('course', CourseController::class)->middleware(['auth', 'isAdmin
 Route::resource('materi', MaterialController::class)->middleware(['auth', 'isAdmin']);
 Route::resource('pembelian', PembelianController::class)->middleware(['auth', 'isAdmin']);
 Route::resource('userdata', UserController::class)->middleware(['auth', 'isAdmin']);
+
+//set route mentor
+Route::resource('mentor', MentorController::class)->middleware(['auth', 'isMentor']);
+Route::resource('material', MaterialController::class)->middleware(['auth', 'isMentor']);
+Route::get('/add-material/{course}', [MaterialController::class, 'spesificForm'])->name('add-material')->middleware(['auth', 'isMentor']);

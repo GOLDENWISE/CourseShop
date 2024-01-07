@@ -13,20 +13,25 @@
 
     @foreach($courses as $course)
 
-    <a href="{{ route('langganan.show', ['langganan' => $course->id]) }}">
-      <div class="course-items">
-        <div class="image-h1-p">
-          <img src="{{ asset('img/image 1.png') }}" alt="">
-          <div class="h1-p">
-            <h1>{{ $course->name }}</h1>
-            <p>{{ $course->description }}</p>
+      @if(Auth::user()->mentor->id != $course->mentor_id)
+      
+        <a href="{{ route('langganan.show', ['langganan' => $course->id]) }}">
+          <div class="course-items">
+            <div class="image-h1-p">
+              <img src="{{ asset('img/image 1.png') }}" alt="">
+              <div class="h1-p">
+                <h1>{{ $course->name }}</h1>
+                <p>{{ $course->description }}</p>
+              </div>
+            </div>
+            <div class="price">
+              <h3>Rp {{ $course->price }}</h3>
+            </div>
           </div>
-        </div>
-        <div class="price">
-          <h3>Rp {{ $course->price }}</h3>
-        </div>
-      </div>
-    </a>
+        </a>
+
+      @endif
+
 
     @endforeach
 
