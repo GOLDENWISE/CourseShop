@@ -106,7 +106,7 @@ class UserController extends Controller
             ]);
         }
 
-        return redirect()->route('userdata.index');
+        return redirect()->route('userdata.index')->with('success', 'Status user has been change!!');
     }
 
     /**

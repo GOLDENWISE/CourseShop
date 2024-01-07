@@ -6,13 +6,8 @@
             <div id="content-wrapper" class="d-flex flex-column">
                 @include('layouts.navbar')
                 <div id="content">
-                    <!-- Begin Page Content -->
                     <div class="container-fluid">
-    
-                        <!-- Page Heading -->
                         <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                        
-                        <!-- DataTales Example -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">{{ $title }}</h6>
@@ -22,6 +17,13 @@
                             
                                     <a href="{{ route('course.create') }}" class="btn btn-primary mb-4">Tambah Course</a>
                                 
+                                @endif
+                                @if(session()->has('success'))
+                                <div class="alert alert-success d-flex align-items-center" role="alert">
+                                    <div>
+                                      {{ session('success') }}
+                                    </div>
+                                </div>
                                 @endif
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -67,7 +69,7 @@
                                                             <form action="{{ route('course.destroy', ['course' => $data->id]) }}" method="post">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="submit" class="btn btn-danger">DELETE</button>
+                                                                <button type="submit" class="btn btn-danger" onclick="alert('Want to delete this course?')">DELETE</button>
                                                             </form>
                                                         </td>
                                                     @elseif(count($labels) ==  3)
@@ -88,7 +90,7 @@
                                                                     <label for="admin">Admin</label>
                                                                 </div>
                                                             </td>
-                                                            <td><button type="submit" class="btn btn-warning text-dark">UPDATE</button></td>
+                                                            <td><button type="submit" class="btn btn-warning text-dark" onclick="alert('Did you want to change this user status?')">UPDATE</button></td>
                                                         </form>
                                                     @endif
                                                 </tr>

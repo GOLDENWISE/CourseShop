@@ -53,7 +53,7 @@ class CourseController extends Controller
             'mentor_id' => $request->mentor,
             'facility' => $facility,
         ]);
-        return redirect()->route('course-data');
+        return redirect()->route('course-data')->with('success', 'Course Added!!');
     }
 
     /**
@@ -61,12 +61,16 @@ class CourseController extends Controller
      */
     public function show(Jurusan $jurusan, Course $course)
     {
-        return view('course', [
-            'title' => 'Course Academy - '.$course->name,
-            'jurusan' => $jurusan,
-            'jurusans' => Jurusan::all(),
-            'course' => $course 
-        ]);
+        if(Auth::user()->mentor->id != $course->mentor_id){
+            return view('course', [
+                'title' => 'Course Academy - '.$course->name,
+                'jurusan' => $jurusan,
+                'jurusans' => Jurusan::all(),
+                'course' => $course 
+            ]);
+        }else{
+            return redirect()->route('home');
+        }
     }
 
     /**

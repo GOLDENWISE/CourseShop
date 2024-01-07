@@ -47,7 +47,7 @@ class AuthController extends Controller{
             'status' => false
         ]);
 
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', 'Akun anda berhasil di registrasi. Lakukan login saat ini untuk dapat belajar');
     }
     public function authorization(Request $request){
         $credentials = $request->validate([
@@ -57,13 +57,9 @@ class AuthController extends Controller{
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            if(Auth::user()->admin->status){
-                return redirect()->route('admin.index');
-            }else{
-                return redirect()->route('home');
-            }
+            return redirect()->route('home');
         }else{
-            return redirect()->route('login');
+            return redirect()->route('login')->with('failed', 'Login gagal! email atau password password kamu salah. Coba lagi yaa!!');
         }
     }
     public function logout(){
