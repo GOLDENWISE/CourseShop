@@ -13,15 +13,15 @@
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Description</span>
-        <input type="description" name="description" class="form-control" placeholder="Masukkan nama course" aria-label="course-name" aria-describedby="basic-addon1">
+        <input type="description" name="description" class="form-control" placeholder="Masukkan description course" aria-label="course-name" aria-describedby="basic-addon1">
       </div>
       <div class="mb-3 text-light">
         <label for="formFile" class="form-label">Upload Modul Materi</label>
         <input class="form-control" name="modul" type="file" id="formFile">
       </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Link Video Materi</span>
-        <input type="text" name="video" class="form-control" placeholder="Masukkan nama course" aria-label="course-name" aria-describedby="basic-addon1">
+      <div class="mb-3 text-light">
+        <label for="formFile" class="form-label">Upload Video Materi</label>
+        <input class="form-control" name="video" type="file" id="formFile">
       </div>
       <br>
       <div class="d-flex align-items-center justify-content-between mb-3">

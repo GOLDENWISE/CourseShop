@@ -10,7 +10,7 @@
 
   @auth
     
-    @if(Request::routeIs(['admin.index', 'mentor.index', 'mentor.show', 'course.edit','course.create','purchase-data', 'course-data', 'userdata.index']))
+    @if(Request::routeIs(['admin.index', 'mentor.index', 'mentor.show', 'course.edit','course.create','purchase-data', 'course-data', 'userdata.index', ]))
   
       <link rel="stylesheet" href="{{ asset('css/sb-admin-2.min.css') }}" type="text/css"> 
       <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
@@ -33,7 +33,7 @@
 
     @endif
 
-    @if(Request::routeIs(['add-material']))
+    @if(Request::routeIs(['add-material', 'learn']))
 
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 

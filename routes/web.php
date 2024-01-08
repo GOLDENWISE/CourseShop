@@ -45,10 +45,11 @@ Route::get('/data-pembelian', [AdminController::class, 'showPurchaseData'])->nam
 Route::get('/data-course', [AdminController::class, 'showCourseData'])->name('course-data')->middleware(['auth', 'isAdmin']);
 Route::resource('course', CourseController::class)->middleware(['auth', 'isAdmin']);
 Route::resource('materi', MaterialController::class)->middleware(['auth', 'isAdmin']);
-Route::resource('pembelian', PembelianController::class)->middleware(['auth', 'isAdmin']);
+Route::resource('pembelian', PembelianController::class)->middleware(['auth']);
 Route::resource('userdata', UserController::class)->middleware(['auth', 'isAdmin']);
 
 //set route mentor
 Route::resource('mentor', MentorController::class)->middleware(['auth', 'isMentor']);
 Route::resource('material', MaterialController::class)->middleware(['auth', 'isMentor']);
 Route::get('/add-material/{course}', [MaterialController::class, 'spesificForm'])->name('add-material')->middleware(['auth', 'isMentor']);
+Route::get('/learn/{course}/materi/{materi}', [MaterialController::class, 'learn'])->name('learn')->middleware('auth');

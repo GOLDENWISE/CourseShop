@@ -14,7 +14,6 @@
       <thead>
         <tr>
           <th>Materi</th>
-          <th>Edit</th>
           <th>Delete</th>
         </tr>
       </thead>
@@ -23,7 +22,6 @@
     
           <tr>
             <td>{{ $material->name }}</td>
-            <td><a href="{{ route('material.edit', ['material' => $material]) }}" class="btn btn-info">Edit Materi</a></td>
             <td>
               <form action="{{ route('material.destroy', ['material' => $material]) }}" method="post">
                 @csrf

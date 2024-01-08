@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Material;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\StoreMaterialRequest;
 use App\Http\Requests\UpdateMaterialRequest;
 
@@ -21,17 +23,27 @@ class MaterialController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Course $course)
+    public function create()
     {
         
     }
 
     public function spesificForm(Course $course){
-        return view('addMaterial', [
-            'title' => "Tambah Materi ".$course->name,
-            'Title' => 'Materi',
-            'course' => $course,
-        ]);
+
+        if(Auth::user()->mentor->id == $course->mentor_id){
+
+            return view('addMaterial', [
+                'title' => "Tambah Materi ".$course->name,
+                'Title' => 'Materi',
+                'course' => $course,
+            ]);
+
+        }else{
+
+            return redirect()->route('home');
+
+        }
+
     }
 
     /**
@@ -45,18 +57,33 @@ class MaterialController extends Controller
             $modulName = $request->file('modul')->getClientOriginalName();
             $modulPath = $request->file('modul')->storeAs('modul/'.$courseName, $modulName, 'public');
             
-            Material::create([
-                'name' => $request->name,
-                'course_id' => $request->course_id,
-                'modul' => $modulPath, // Save the file path, not the file itself
-                'video' => $request->video,
-                'description' => $request->description,
-            ]);
-            return redirect()->route('mentor.show', ['mentor' => $request->course_id])
-                            ->with('success', 'Materi berhasil ditambahkan');
+            if($request->hasFile('video')) {
+                $videoName = $request->file('video')->getClientOriginalName();
+                $videoPath = $request->file('video')->storeAs('video/'.$courseName, $videoName, 'public');
+
+                Material::create([
+                    'name' => $request->name,
+                    'course_id' => $request->course_id,
+                    'modul' => $modulPath, 
+                    'video' => $videoPath,
+                    'description' => $request->description,
+                ]);
+                return redirect()->route('mentor.show', ['mentor' => $request->course_id])
+                                ->with('success', 'Materi berhasil ditambahkan');
+
+            }
         }
     
     
+    }
+
+    public function learn(Course $course, Material $materi){
+        return view('material', [
+            'title' => $course->name.'-'.$materi->name,
+            'course' => $course,
+            'material' => $materi
+        ]);
+
     }
 
     /**
@@ -72,7 +99,7 @@ class MaterialController extends Controller
      */
     public function edit(Material $material)
     {
-        //
+        
     }
 
     /**
