@@ -11,6 +11,7 @@ use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MentorController;
+use App\Http\Controllers\ReviewController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,3 +54,4 @@ Route::resource('mentor', MentorController::class)->middleware(['auth', 'isMento
 Route::resource('material', MaterialController::class)->middleware(['auth', 'isMentor']);
 Route::get('/add-material/{course}', [MaterialController::class, 'spesificForm'])->name('add-material')->middleware(['auth', 'isMentor']);
 Route::get('/learn/{course}/materi/{materi}', [MaterialController::class, 'learn'])->name('learn')->middleware('auth');
+Route::resource('review', ReviewController::class)->middleware('auth');

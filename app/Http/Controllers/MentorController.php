@@ -17,7 +17,9 @@ class MentorController extends Controller
     public function index()
     {
         return view('homeMentor', [
+
             'title' => 'Dashboard Mentor'
+            
         ]);
     }
 

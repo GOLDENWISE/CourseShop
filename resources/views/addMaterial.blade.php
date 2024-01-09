@@ -13,7 +13,8 @@
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Description</span>
-        <input type="description" name="description" class="form-control" placeholder="Masukkan description course" aria-label="course-name" aria-describedby="basic-addon1">
+        <textarea name="description" class="form-control" placeholder="Masukkan description course" aria-label="course-name" aria-describedby="basic-addon1">
+        </textarea>
       </div>
       <div class="mb-3 text-light">
         <label for="formFile" class="form-label">Upload Modul Materi</label>

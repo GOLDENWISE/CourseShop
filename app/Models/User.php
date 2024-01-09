@@ -57,5 +57,11 @@ class User extends Authenticatable
     public function admin(){
         return $this->hasOne(Admin::class);
     }
+    public function review(){
+        return $this->hasMany(Review::class);
+    }
+    public function repliesreview(){
+        return $this->hasMany(Review::class);
+    }
 
 }

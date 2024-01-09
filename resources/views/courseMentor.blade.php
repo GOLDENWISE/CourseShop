@@ -3,7 +3,7 @@
 @section('content')
 <div class="d-flex flex-column align-items-center justify-content-center w-100 h-75">
   <div class="container d-flex flex-column pt-5 mt-5">
-    <h1 class="text-center text-light">{{ $title }}</h1>
+    <h1 class="text-center text-light mb-5">{{ $title }}</h1>
     @if(session()->has('success'))
       <div class="alert alert-success" role="alert">
         {{ session('success') }}
@@ -14,6 +14,7 @@
       <thead>
         <tr>
           <th>Materi</th>
+          <th>Comment</th>
           <th>Delete</th>
         </tr>
       </thead>
@@ -22,6 +23,7 @@
     
           <tr>
             <td>{{ $material->name }}</td>
+            <td><a href="{{ route('learn', ['course' => $material->course, 'materi' => $material]) }}" class="btn btn-primary">Lihat Kelas Anda</a></td>
             <td>
               <form action="{{ route('material.destroy', ['material' => $material]) }}" method="post">
                 @csrf

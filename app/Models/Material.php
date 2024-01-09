@@ -15,4 +15,8 @@ class Material extends Model
     public function course(){
         return $this->belongsTo(Course::class);
     }
+
+    public function review(){
+        return $this->hasMany(Review::class);
+    }
 }

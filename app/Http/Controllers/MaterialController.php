@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Material;
 use App\Models\Course;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -52,6 +53,13 @@ class MaterialController extends Controller
     public function store(Request $request)
     {
     
+        $descriptions = explode("\r\n", $request->description);
+        $textDescript = '';
+        foreach($descriptions as $description){
+
+            $textDescript = $textDescript.'<p>'.$description.'</p>';
+
+        }
         if ($request->hasFile('modul')) {
             $courseName = Course::find($request->course_id)->name;
             $modulName = $request->file('modul')->getClientOriginalName();
@@ -66,7 +74,7 @@ class MaterialController extends Controller
                     'course_id' => $request->course_id,
                     'modul' => $modulPath, 
                     'video' => $videoPath,
-                    'description' => $request->description,
+                    'description' => $textDescript,
                 ]);
                 return redirect()->route('mentor.show', ['mentor' => $request->course_id])
                                 ->with('success', 'Materi berhasil ditambahkan');
