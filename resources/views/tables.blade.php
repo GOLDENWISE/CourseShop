@@ -44,7 +44,7 @@
                                         <tbody>
                                             @foreach($datas as $data)
                                                 <tr>
-                                                    @if(count($labels) == 6)
+                                                    @if(Request::routeIs('purchase-data'))
                                                         @if(isset($data->course->name))
                                                             <td>{{ $data->id }}</td>
                                                             <td>{{ $data->student->user->name }}</td>
@@ -53,7 +53,7 @@
                                                             <td>{{ $data->course->price }}</td>
                                                             <td>{{ $data->created_at }}</td>
                                                         @endif
-                                                    @elseif(count($labels) == 4)
+                                                    @elseif(Request::routeIs('course-data'))
                                                         <td>{{ $data->name }}</td>
                                                         <td>
                                                             <ul>
@@ -72,9 +72,11 @@
                                                                 <button type="submit" class="btn btn-danger" onclick="alert('Want to delete this course?')">DELETE</button>
                                                             </form>
                                                         </td>
-                                                    @elseif(count($labels) ==  3)
+                                                    @elseif(Request::routeIs('userdata.index'))
                                                         <td>{{ $data->name }}</td>
                                                         <td>{{ $data->email }}</td>
+                                                        <td width=500>{{ $data->mentor->description }}</td>
+                                                        <td><a href="{{ asset('storage/'.$data->mentor->cv) }}" class="btn btn-primary" download>Lihat CV</a></td>
                                                         <form action="{{ route('userdata.update', ['userdatum' => $data->id]) }}" method="post">
                                                             @csrf
                                                             @method('PUT')

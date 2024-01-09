@@ -13,7 +13,7 @@
         <ul>
           <li><a href="{{ route('langganan.index') }}">Langganan</a></li>
           <li><a href="{{ route('jurusan') }}">Learning Path</a></li>
-          <li><a href="">Lainnya</a></li>
+          <li><a href="{{ route('lainnya.create') }}">Lainnya</a></li>
         </ul>
       </div>
 

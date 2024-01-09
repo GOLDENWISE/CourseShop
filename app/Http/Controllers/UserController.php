@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         return view('tables', [
             'title' => 'Data User',
-            'labels' => ['Nama', 'Email','status'],
+            'labels' => ['Nama', 'Email','Description','CV','status'],
             'datas' => User::all()
         ]);
     }

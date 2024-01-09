@@ -12,6 +12,7 @@ use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\PengajuanMentor;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +25,7 @@ use App\Http\Controllers\ReviewController;
 */
 // route halaman utama
 Route::get('/', [Home::class, 'index'])->name('home');
+Route::resource('lainnya', PengajuanMentor::class)->middleware('auth');
 
 // set route autentikasi
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
@@ -53,5 +55,7 @@ Route::resource('userdata', UserController::class)->middleware(['auth', 'isAdmin
 Route::resource('mentor', MentorController::class)->middleware(['auth', 'isMentor']);
 Route::resource('material', MaterialController::class)->middleware(['auth', 'isMentor']);
 Route::get('/add-material/{course}', [MaterialController::class, 'spesificForm'])->name('add-material')->middleware(['auth', 'isMentor']);
+
+//set route student
 Route::get('/learn/{course}/materi/{materi}', [MaterialController::class, 'learn'])->name('learn')->middleware('auth');
 Route::resource('review', ReviewController::class)->middleware('auth');

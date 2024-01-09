@@ -40,7 +40,6 @@ class AuthController extends Controller{
         Mentor::create([
             'user_id' => User::where('email', $request->email)->first()->id, 
             'status' => false,
-            'description' =>'dgfsjgdhjfgjhsdagfjhasdgfjasdgfjsdagfsdgfhjsdgfhjdfgshjdagfjhasdgfjhsdagfhjsda'
         ]);
         Admin::create([
             'user_id' => User::where('email', $request->email)->first()->id, 

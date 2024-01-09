@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->boolean('status');
-            $table->text('description', 65535);
+            $table->text('description', 65535)->nullable();
+            $table->string('cv')->nullable();
             $table->timestamps();
         });
     }
